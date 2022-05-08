@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JavaScript Tutorial - Part 1 (Basics)</title>
+</head>
+<body>
+	<h1>JavaScript Basics | Part 1</h1>
+	<a href="https://www.youtube.com/watch?v=PkZNo7MFNFg&t=7313s" target="_blank">Tutorial Link</a>
+	<script type="text/javascript">
+		// https://www.youtube.com/watch?v=PkZNo7MFNFg&t=7313s
+		//inline comment
+		/*
+			Multiline
+			Comment
+		*/
+
+		// data types and variables
+		// JS has 7 different data types - undefined, null, boolean, string, symbol, number, object
+		// declaring variables, 3 ways, https://www.programiz.com/javascript/let-vs-var
+		var name = "Amit Kumar"; // global or function scoped if declared inside function, allows redeclaration of variables, allows hoisting
+		let fname = "Amit"; // block scoped, "let" doesn't allowd redeclaration of variables, doesn't allows hoisting
+		const pi = 3.14; // declaring constants
+		// NOTE: a good practise is to use only 'let' and 'const'
+		// NOTE: we can update array/object elements declared using 'const'
+
+		console.log(name, fname, pi);
+
+		// identifiers are case sensitive in JS
+
+		var num1 = 4, num2 = 5;
+		num1++; ++num1; num2--; --num2; // allowed
+		console.log(num1, num2);
+
+		// +=, -=, *=, /=, %= allowed
+
+		// escape character in string literals
+		var str = "I am a \"double quoted\" string inside another double quoted string";
+		var str2 = 'I am a \'double quoted\' string inside another double quoted string';
+		var str3 = 'I am a "double quoted" string inside another double quoted string';
+		var str4 = `'I am a "double quoted" string inside another double quoted string'`; // backticks allows to use both '' and "" inside a string literal
+		console.log(str);
+		console.log(str2);
+		console.log(str3);
+		console.log(str4);
+
+
+		// more escape characters
+		/***
+			CODE		OUTPUT
+			\'			single quote
+			\"			double quotes
+			\\			backslash
+			\n 			newline
+			\r 			carriage return
+			\t 			tab
+			\b 			backspace
+			\f 			form feed
+		***/
+
+
+		var myStr = "FirstLine\n\t\\SecondLine\nThirdLine";
+		console.log(myStr);
+
+
+		// concatenating strings
+		var s1 = "Amit";
+		var s2 = "Kumar";
+		var s3 = s1+s2;
+		console.log(s3);
+		var s3 = "My name is " + "Amit Kumar.";
+		console.log(s3);
+
+		// concatenating strings using += 
+		s1 = "I come first. ";
+		s1 += "I come second."
+		console.log(s1);
+
+		//concatenating strings with variables
+		s1 = "I come first. ";
+		console.log(s1 + pi + ".\n" + "I come second.");
+
+
+
+		// finding length of string
+		s1 = "Amit";
+		console.log(s1 + " = ", s1.length);
+		s2 = "Amit Kumar";
+		console.log(s2 + " = ", s2.length);
+
+
+		// getting character at a specific index within string
+		console.log(s2 + " has initials = " + s2[0] + s2[5]);
+
+
+		// string immutability, strings in JS are immutable, means the string can be changed, but the individual characters cannot be changed
+		s1 = "Kim";
+		s1[0] = 'T'; // error, or no change
+		console.log(s1);
+
+
+		// getting last character
+		console.log(s2[s2.length - 1]);
+		// second to last
+		console.log(s2[s2.length - 2]);
+
+
+		// arrays
+		var ourArr = ["John", 23];
+		console.log(ourArr);
+		// nested array, multidimensional array
+		ourArr = [["Amit", 24], ["Priya", 21]];
+		console.log(ourArr[0][0] + " and " + ourArr[1][0] + " are friends.");
+		// modifying array with indexed
+		ourArr[0][0] = "Sneha";
+		console.log(ourArr[0][0] + " and " + ourArr[1][0] + " are friends.");
+		// appending data at the end of the array
+		var a1 = [1, 2, 3, 4];
+		a1.push(55);
+		a1.push([66, 77]);
+		console.log(a1);
+		ourArr.push(["Amit", 24]);
+		console.log(ourArr);
+		// removing array elements with pop, removes the last element and returns it
+		var ret = a1.pop();
+		console.log(ret);
+		// manipulating arrays with shift() - similar to pop, removed the first element
+		ret = a1.shift();
+		console.log(ret);
+		ourArr.shift();
+		console.log(ourArr);
+		// unshift(), adds an element to the beginning of the array.
+		ourArr.unshift(["Sneha", 24]);
+		console.log(ourArr);
+		console.log(typeof(s1));
+		console.log(typeof(a1));
+		console.log(typeof(ourArr));
+
+
+		// function
+		function functionName(param1, param2) {
+			// body
+			console.log("inside functionName");
+			console.log(param1 + " " + param2);
+			return 0; // no return statement, "undefined" returned
+		}
+		var x = functionName();
+		console.log("x="+x);
+		functionName(1);
+		functionName(1, 3);
+		functionName("Amit", "Sneha");
+
+
+		// NOTE: variables declared without the "var" keyword become global automatically even if defined inside a block
+
+		//scope tutorial 1
+		var myGlobal = 10; //global scope
+		function fun1() {
+			oopsGlobal = 5; //declared without "var" keyword, so has global scope
+		}
+		function fun2() {
+			var output = "";
+			if (typeof myGlobal != "undefined") {
+				output += "myGlobal: " + myGlobal + "(" + typeof(myGlobal) + ")";
+			}
+			if(typeof oopsGlobal != "undefined") {
+				output += "\noopsGlobal: " + oopsGlobal + "(" + typeof(oopsGlobal) + ")";
+			}
+			console.log(output)
+		}
+		fun1(); fun2();
+
+
+		// changing an array to string: JSON.stringify(arrayName);
+		console.log(JSON.stringify(ourArr));
+		console.log(typeof(JSON.stringify(ourArr)));
+
+
+		// booleans
+		var a = true, b = false;
+
+
+		// equality operator: ==
+		// strict equality operator: ===
+		/******* 
+		 * 3 === 3 // true
+		 * 3 === '3' //false
+		 * 3 == 3 // true
+		 * 3 == '3' //true, performs type conversion and converts string to number
+		 * ***/
+	 	// inequality operator: !=
+	 	// strict inequality operator: !==
+	 	// logical and: &&
+	 	// logical or: ||
+
+	 	x=0;
+	 	// if else
+	 	if (x===0) {
+	 		// if body
+	 	} else if (x > 0) { // order important when using else if 
+	 		// else if body
+	 	} else {
+	 		// else body
+	 	}
+
+
+	 	// switch statement: can be used instead of chained if-else
+	 	var val=1;
+	 	switch(val) { // val can be string or number
+	 		case 1: // val === 1
+	 			console.log("one");
+	 			break;
+	 		case 2: // val === 2
+	 			console.log("two");
+	 			break;
+	 		default:
+	 	}
+	 	switch (val) {
+	 		case 1:
+	 		case 2:
+	 		case 3:
+	 			console.log("same output for cases 1, 2, 3");
+	 			break;
+	 		case 4:
+	 		case 5:
+	 		case 6:
+	 		case 7:
+	 			console.log("same output for cases 4, 5, 6, 7");
+	 			break;
+	 		default:
+	 			console.log("nothing");
+	 	}
+
+
+	 	// objects - similar to arrays, we use keys(properties) instead of indices to access elements
+	 	var ourDog = {
+	 		"name": "Camper",
+	 		"legs": 4,
+	 		"tails": 1,
+	 		"friends": ["everything!", "anything"],
+	 		23: 44, // https://www.becomebetterprogrammer.com/can-javasscript-object-keys-be-numbers-or-non-string-values/#:~:text=Against%20what%20many%20think%2C%20JavaScript,to%20a%20string%20a%20value.
+	 		// JavaScript object keys cannot be Number, Boolean, Null, or Undefined type values. See workaround(access using variables)
+	 		// Object keys can only be strings, and even though a developer can use other data types to set an object key, JavaScript automatically converts keys to a string a value.
+	 		"can only be accessed using bracket method": 77,
+	 	};
+	 	console.log(ourDog[23]);
+	 	var v1 = 23;
+	 	// console.log(ourDog.v1); // doesn't work for dot method
+	 	console.log(ourDog[v1]);
+	 	console.log(ourDog["name"]);
+	 	console.log(ourDog["friends"][1]);
+	 	console.log(ourDog.name);
+	 	console.log(ourDog.friends[0]);
+	 	console.log(ourDog["can only be accessed using bracket method"]);
+	 	// NOTE: bracket notation is required when you have a " "(space) in your keys
+	 	// updating object properties
+	 	ourDog.friends.push("Amit"); //inserting new item to array properties
+	 	ourDog.legs = 3; //updating
+	 	ourDog["color"] = "Brown"; // inserting a new key value pair, can also be done using dot notation
+	 	ourDog.bark = "bawww wow, woof!";
+	 	console.log(ourDog.name + " is " + ourDog.color + " colored dog and has " + ourDog.friends.length + " friends. " + ourDog.bark); 
+	 	//deleting properties from objects
+	 	delete ourDog.bark;
+	 	delete ourDog["can only be accessed using bracket method"];
+	 	console.log(ourDog["can only be accessed using bracket method"]);
+	 	console.log(ourDog.name + " is " + ourDog.color + " colored dog and has " + ourDog.friends.length + " friends. " + ourDog.bark); 
+	 	// IMP: check if object has specific property
+	 	var myObj = {
+	 		gift: "pony",
+	 		pet: "kitten",
+	 		bed: "sleigh",
+	 	};
+	 	console.log(myObj.hasOwnProperty("pet")); // true	
+	 	console.log(myObj.hasOwnProperty("gift")); // true
+	 	console.log(myObj.hasOwnProperty("amit")); // false
+	 	
+
+
+	 	// managing complex data types
+	 	var myMusic = [ // myMusic is an array
+	 		{	// first array element is an object
+	 			"artist": "Switchfoot",
+	 			"title": "On Fire",
+	 			"release_year": 2005,
+	 			"formats": [
+	 				"CD",
+	 				"8T",
+	 				"LP"
+	 			],
+	 			"gold": true,
+	 		},
+	 		{
+	 			"artist": "Linkin Park",
+	 			"title": "Parasite",
+	 			"release_year": 2000,
+	 			"formats": [
+	 				"YouTube",
+	 				"8T",
+	 				"Lossless"
+	 			],
+	 			"gold": true,
+	 		},
+	 	];
+	 	var myStorage = {
+	 		"car": {
+	 			"inside": {
+	 				"glove box": "maps",
+	 				"passenger seat": "crumbs"
+	 			},
+	 			"outside": {
+	 				"trunk": "jack"
+	 			}
+	 		}
+	 	};
+	 	console.log(myStorage.car.inside["glove box"]); // access glovebox
+
+	 	// making a copy of an object
+	 	var myStorageCopy = JSON.parse(JSON.stringify(myStorage));
+	 	console.log(myStorage);
+	 	console.log(myStorageCopy);
+
+
+	 	// if a property exist/doesn't exist and we want to check then use 
+	 	myMusic[0]["formats"] = myMusic[0]["formats"] || []; // if myMusic[0]["formats"] exists then it is set equal to itself, else it is created(since this property is an array, so we initialize to array)
+
+
+	 	// nested for loops
+	 	var nums = [[1, 2], [3, 4, 5], [6, 7, 8, 9], [10]];
+	 	var bag = "";
+	 	for(var i=0; i<nums.length; i++) {
+	 		bag = "";
+	 		for (var j=0; j<nums[i].length; j++) {
+	 			bag += nums[i][j] + " ";
+	 		}
+	 		console.log(bag);
+	 	}
+
+	 	// JS has do..while loops
+
+
+	 	// generating random fractions/numbers
+	 	function randomFunction() {
+	 		var rFraction = Math.random();
+	 		var rDecimal = Math.floor(Math.random() * 20); // will create a random whole number between 0 and 19
+	 		var ourMin = 5, ourMax = 15;
+	 		var rRange = Math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin; // generate random numbers between 5 and 15
+
+	 		return rRange;
+	 	}
+	 	console.log(randomFunction());
+
+
+	 	// converting string to integer
+	 	// if conversion cannot be done, returns NaN
+	 	console.log(parseInt("23"));
+	 	console.log(parseInt("amit"));
+	 	// parseInt can also be used with radix(we can specify the base of the number)
+	 	console.log(parseInt("1011", 2));
+
+
+	 	// ternary operator
+	 	// condition ? statement-if-true : statement-if-false;
+	 	(2 === 3) ? console.log("Equal") : console.log("Not equal");
+	 	// multiple ternary operator
+	 	function checkSign(num) {
+	 		return num > 0 ? "positive" : num < 0 ? "negative" : " zero";
+	 	}
+	 	console.log(checkSign(0));
+
+
+	 	// "use strict"
+	 	function catTalk () {
+	 		"use strict"; // Defines that JavaScript code should be executed in "strict mode". This can be put at the start of functions, or the entire JS file.
+	 	}
+
+
+	 	// array/object elements can be mutated even if declared using 'const', solution? freeze
+	 	function freezeObj() {
+	 		"use strict";
+	 		const MATH_CONSTANTS = {
+	 			PI: 3.14,
+	 		};
+	 		Object.freeze(MATH_CONSTANTS); // this will precent constants(array/objects elements) from being mutated
+	 		try {
+	 			MATH_CONSTANTS.PI = 99;
+	 		} catch (ex) {
+	 			console.log(ex);
+	 		}
+	 		return MATH_CONSTANTS.PI;
+	 	}
+	 	const PI = freezeObj();
+
+
+
+	 	// anonymous function, converting to arrow function
+	 	var magic1 = function () { // this function is anonymous, no name
+	 		return new Date();
+	 	};
+	 	var magic2 = () => new Date(); // single line in function so no need for return and {}
+	 	console.log(magic1());
+	 	console.log(magic2());
+	 	// arrow functions with params
+	 	// original function
+	 	var arr1 = [1, 2], arr2 = [3, 4];
+	 	var myConcat1 = function (arr1, arr2) {
+	 		return arr1.concat(arr2);
+	 	}
+	 	console.log(myConcat1(arr1, arr2));
+	 	// transforming to arrow function
+	 	const myConcat2 = (arr1, arr2) => arr1.concat(arr2); // if the arrow function has a single argument, parenthesis for the arguments not needed
+	 	console.log(myConcat2(arr1, arr2));
+
+
+
+
+	 	// array iteration - 8 function, https://www.youtube.com/watch?v=Urwzk6ILvPQ
+	 	// 1. forEach, method calls a function for each element in an array. method is not executed for empty elements.
+	 	var myArr = [1, 2, 3, 4];
+	 	myArr.forEach(function(item, index) {
+	 		console.log(item, index);
+	 	});
+	 	// 2. map, creates a new array from calling a function for every array element. does not change the original array. does not execute the function for empty elements.
+	 	const three = [1, 2, 3];
+	 	const doubled = three.map(function (item) {
+	 		return item*2;
+	 	});
+	 	console.log(doubled);
+	 	// 3. filter, check each item of the array against some condition. method creates a new array filled with elements that pass a test provided by a function. method does not execute the function for empty elements. method does not change the original array.
+	 	const ints = [1, 2, 3];
+	 	const evens = ints.filter(function (item) {
+	 		return item%2 === 0;
+	 	});
+	 	console.log(evens);
+	 	// 4. reduce, method executes a reducer function for array element. method returns a single value: the function's accumulated result. method does not execute the function for empty array elements. method does not change the original array.
+	 	const sum = [1, 2, 3].reduce(function (result, item) {
+	 		return result + item;
+	 	}, 0 /* initial value of result, if we dont put this then result=first item of array */);
+	 	console.log(sum);
+	 	// 5. some, method checks if any array elements pass a test (provided as a function). method executes the function once for each array element: If the function returns true, some() returns true and stops. If the function returns false, some() returns false and stops. method does not change the original array. method does not execute the function for empty array elements.
+	 	const hasNegativeNumbers = [1, 2, 3, -1, 4].some(function(item) {
+	 		return item < 0;
+	 	});
+	 	console.log(hasNegativeNumbers);
+	 	// 6. every, method executes a function for each array element. method returns true if the function returns true for all elements. method returns false if the function returns false for one element. method does not execute the function for empty elements. method does not change the original array.
+	 	const allPositiveNumbers = [1, 2, 3, 4].every(function(item) {
+	 		return item > 0;
+	 	});
+	 	console.log(allPositiveNumbers);
+	 	// 7. find, method returns the value of the first element that passes a test. method executes a function for each array element. method returns undefined if no elements are found. method does not execute the function for empty elements. method does not change the original array.
+	 	const objects = [{id: 'a'}, {id: 'b'}, {id: 'c'}];
+	 	const found = objects.find(function(item) {
+	 		return item.id === 'b';
+	 	});
+	 	console.log(found);
+	 	// 8. findIndex,  method executes a function for each array element. method returns the index (position) of the first element that passes a test. method returns -1 if no match is found.	method does not execute the function for empty array elements. method does not change the original array.
+	 	const objects2 = [{id: 'a'}, {id: 'b'}, {id: 'c'}];
+	 	const foundIndex = objects.findIndex(function(item) {
+	 		return item.id === 'b';
+	 	});
+	 	console.log(foundIndex);
+
+
+	 	// arrow function and array iteration functions
+	 	const realNumbersArray = [4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2];
+	 	const squareList = (arr) => {
+	 		const squaredIntegers = arr.filter((num) => Number.isInteger(num) && num > 0).map(x => x*x);
+	 		return squaredIntegers;
+	 	};
+	 	const squaredIntegers = squareList(realNumbersArray);
+	 	console.log(squaredIntegers);
+
+
+
+	 	// default argument
+	 	const increment = (function () {
+	 		return function increment(num, val = 1 /* default arg */) {
+	 			return num + val;
+	 		};
+	 	})();
+	 	console.log(increment(5, 2));
+	 	console.log(increment(5));
+
+
+	 	// variable number of arguments, rest operator
+	 	const sum1 = (function() {
+	 		return function sum(...args) { //rest operator
+	 			return args.reduce((a, b) =>  a+b, 0);
+	 		};
+	 	})();
+	 	console.log(sum1(1, 2, 3, 4)); // works with any number of arguments
+
+
+	 	// spread operator
+	 	// arr2 = arr1, makes reference(from arr2) to arr1. It doesnt copy elements
+	 	// so if you change arr1 elements, it will be reflected in arr2 as well, solution? 
+	 	var arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+	 	var arr2;
+	 	(function() {
+	 		arr2 = [...arr1]; // instead of using `arr2 = arr1;`
+	 		arr1[0] = 'potato';
+	 	})();
+	 	console.log(arr2);
+
+
+
+	 	// destructuring, for assigning values taked directly from an object
+	 	var voxel = {x: 3, y: 6, z: 99, "champ": 78};
+	 	// old way
+	 	var x = voxel.x, y=voxel.y, z=voxel.z; //x=3, y=6, z=99
+	 	// new way, destructuring
+	 	var {x: a, y: b, z: c, "champ": d} = voxel; //a=3, b=6, c=99, a, b, c, d are variables, x, y, z, "champ" are keys in object
+	 	console.log(a, b, c, d);
+	 	// destructuring with nested objects
+	 	const LOCAL_FORECAST = {
+	 		today: {min: 72, max: 83},
+	 		tomorrow: {min: 73.3, max: 84.3},
+	 	};
+	 	function getMaxOfTmrw(forecast) {
+	 		"use strict";
+	 		const { tomorrow: {max: maxOfTomorrow} } = forecast; //destructuring
+	 		return maxOfTomorrow;
+	 	}
+	 	console.log(getMaxOfTmrw(LOCAL_FORECAST));
+
+
+	 	// destructuring to assign variables from arrays
+	 	var [x, y, , z] = [1, 2, 3, 4, 5, 6]; //x=1, y=2, z=4
+	 	console.log(x, y, z);
+	 	// swapping using destructuring
+	 	var a=1, b=2;
+	 	console.log(a, b);
+	 	[a, b] = [b, a];
+	 	console.log(a, b);
+
+
+	 	// destructuring with rest operator
+	 	// example: remove the first two elements of the array
+	 	var source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	 	function removeFirstTwo(list) {
+	 		const [ , , ...arr] = list;
+	 		return arr;
+	 	}
+	 	var arr = removeFirstTwo(source);
+	 	console.log(source);
+	 	console.log(arr);
+
+
+
+	 	// destructuring assignment to pass an object as a functions' parameter
+	 	const stats = {
+	 		max: 56.78,
+	 		standard_deviation: 34.54,
+	 		mode: 23.87,
+	 		min: -0.75,
+	 		average: 35.85,
+	 	};
+	 	const half = (function () {
+	 		return function half( {max, min}  ) {
+	 			return (max + min)/2;
+	 		};
+	 	})();
+	 	console.log(stats);
+	 	console.log(half(stats));
+
+
+
+
+	 	// template literals
+	 	var person = {
+	 		name: "Amit",
+	 		age: 23,
+	 	};
+	 	const greetins = `Hello, my name is ${person.name}. !
+	 	I am ${person.age} years old.`;
+	 	console.log(greetins);
+
+
+	 	// simple fields
+	 	//this code
+	 	const createPerson = (name, age, gender) => {
+	 		return {name: name, age: age, gender: gender};
+	 	};
+	 	console.log(createPerson("Amit", 24, "male"));
+	 	// and this code are same
+	 	const createPerson2 = (name, age, gender) => ({name, age, gender});
+	 	console.log(createPerson2("Amit", 24, "male"));
+
+
+	 	// declarative function, easier way of writing functions inside objects
+	 	const bicycle = {
+	 		gear: 2,
+	 		setGear(newgear) { // instead of using `setGear: function (newGear) {`
+	 			"use strict";
+	 			this.gear = newgear;
+	 		}
+	 	};
+	 	bicycle.setGear(3);
+	 	console.log(bicycle.gear);
+
+
+
+	 	// class
+	 	class SpaceShuttle {
+	 		constructor(targetPlant) {
+	 			this.targetPlant = targetPlant;
+	 		}
+	 	}
+	 	var zeus = new SpaceShuttle('Jupiter');
+	 	console.log(zeus.targetPlant);
+
+
+	 	// class 2
+	 	function makeClass() {
+	 		class Vegetable {
+	 			constructor(name) {
+	 				this.name = name;
+	 			}
+	 		}
+	 		return Vegetable;
+	 	}
+	 	const Vegetable = makeClass();
+	 	const carrot = new Vegetable('carrot');
+	 	console.log(carrot.name);
+
+
+	 	// getters and setters
+	 	class Book {
+	 		constructor(author) {
+	 			this._author = author;
+	 		}
+	 		get writer() {
+	 			return this._author;
+	 		}
+	 		set writer(updateAuthor) {
+	 			this._author = updateAuthor;
+	 		}
+	 	}
+
+	 	// imports and exports - watch video
+
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
