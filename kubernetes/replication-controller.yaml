@@ -1,0 +1,21 @@
+# ReplicationController tutorial
+# run using: kubectl apply -f replication-controller.yaml
+apiVersion: v1
+king: ReplicationController
+metadata: 
+  name: myapp-rc
+  labels: 
+    app: myapp
+    type: front-end
+spec:
+  template: # pod-template to be used by ReplicationController to make replicas
+    metadata:
+      name: myapp-pod
+      labels: 
+        app: myapp
+        type: front-end
+    spec: 
+      containers:
+      - name: nginx-container
+        image: nginx
+  replicas: 3

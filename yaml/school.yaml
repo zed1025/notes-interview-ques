@@ -1,0 +1,8 @@
+---
+School:
+- name: SD Jain Modern School
+  Principal: Gene Lee
+  Students:
+  - rno: 2
+    name: Amit Kumar
+    marks: 96

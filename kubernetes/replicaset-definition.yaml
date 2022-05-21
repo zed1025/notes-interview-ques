@@ -1,0 +1,24 @@
+# ReplicaSet tutorial
+# run using: kubectl apply -f replicaset-definition.yaml
+apiVersion: apps/v1
+king: ReplicaSet
+metadata: 
+  name: myapp-replicaset
+  labels: 
+    app: myapp
+    type: front-end
+spec:
+  template: # pod-template to be used by ReplicaSet to make replicas
+    metadata:
+      name: myapp-pod
+      labels: 
+        app: myapp
+        type: front-end
+    spec: 
+      containers:
+      - name: nginx-container
+        image: nginx
+  replicas: 3
+  selector:
+    matchLabels:
+      type: front-end

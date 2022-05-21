@@ -1,0 +1,67 @@
+---
+# anything after ": " is a variable
+myself: "Amit"
+
+---
+# string variables
+# string can be written without quotes or double quotes or single quotes
+string1: !!str My name is Amit
+string2: 'My name is Amit'
+string3: "My name is Amit"
+
+
+---
+# multi line string
+string4: |
+This string is
+a multiline
+string
+
+
+---
+# wrting single line in multiple lines
+msg: >
+this will
+all be in
+one single line
+
+
+---
+number: 455 # integer
+marks: 95.33 # float
+booleanValue: !!bool No # n, N, False, false, FALSE -> boolean type, can use all these instead of No
+# for true -> true, yes, y, Y, TRUE, True, true
+
+
+---
+# specifiying data types explicitly
+# integers
+zero: !!int 0
+positiveNumber: !!int 45
+negativeNumber: !!int -45
+binaryNumber: !!int 0b11001
+octalNumber: !!int 0543
+hexaDecimal: !!int 0xa43d
+commaValue: !!int +540_000 # to store 540,000
+exponent: 6.023E56
+
+
+---
+# floating point numbers
+marks: !!float 45.45
+infinite: !!float .inf
+not a number: .nan
+
+
+---
+# null
+surname: !!null Null # or -> null, NULL, ~
+~: this is a null key
+
+
+
+---
+# dates and time
+date and time: !!timestamp 2002-12-14 # default timezone is UTC
+india time: !!timestamp 2001-12-15T02:59:45.10 + 5:30
+...

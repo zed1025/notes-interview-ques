@@ -1,0 +1,35 @@
+# this is a comment
+# no multiline comment
+
+# key value pairs
+"apple": "I am a red fruit"
+1: "This is my roll number"
+---
+
+# lists
+- apple
+- mango
+- banana
+--- #used to signal the start of a new document. so this file has multiple documents
+
+# YAML is case sensitive
+- apple
+- Apple
+# both are different
+---
+
+
+# block style
+cities:
+  - new delhi
+  - mumbai
+  - gujarat
+
+
+# flow type of the above block stype
+cities2: [new delhi, mumbai, gujarat]
+
+
+# key-value pairs
+{mango: "yellow fruit", age: 56}
+... # end of document

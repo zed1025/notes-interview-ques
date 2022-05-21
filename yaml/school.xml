@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<School name="SD Jain Modern School", principal="Gene Lee">
+  <Students>
+    <Student>
+      <rno>2</rno>
+      <name>Amit Kumar</name>
+      <marks>98</marks>
+    </Student>
+  </Students>
+</School>

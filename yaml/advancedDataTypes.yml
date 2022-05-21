@@ -1,0 +1,97 @@
+---
+# sequence
+student: !!seq
+  - marks
+  - name
+  - roll number
+
+
+---
+# another notation
+student2: [marks, name, roll number]
+
+
+---
+# some of the keys of the sequence will be empty
+# sparse sequence
+sparseSeq:
+  - hey
+  - how
+  -
+  - NULL
+  - sup
+
+
+---
+# nested sequence
+-
+  - Apple
+  - mango
+  - banana
+-
+  - marks
+  - roll no
+  - name
+
+
+---
+# maps: key-value pairs are called maps
+name: !!map "Amit Kumar"
+
+
+---
+# nested maps
+name: Amit Kumar
+roles:
+  age: 78
+  job: student
+grades: {math: 78, physics: 44, chemistry: 67} # another notation for nested maps
+
+
+
+---
+# pairs: keys may have duplicate values
+# !!pairs
+pair example: !!pairs
+  - job: student
+  - job: teacher
+# this will be an array of hash tables
+# same as
+pair example 2: !!pairs [job: carpenter, job: madman]
+
+
+---
+# !!set will allow you to have only unique values
+names: !!set
+  ? Kunal
+  ? Raj
+  ? Mohan
+
+
+---
+# dictionary, !!omap
+People: !!omap
+  - Amit:
+    name: Amit Kumar
+    age: 45
+    height: 185
+  - Raj:
+    name: Raj Popat
+    age: 99
+    height: 33
+
+---
+# reusing properties, using anchors
+# anchors: what do you want to copy and where do you want to copy it
+likings: &likes # likes is the name of the anchor
+  fav fruit: mango
+  dislike: kela
+
+person1:
+  name: amit Kumar
+  <<: *likes # the likings is copy pasted here.
+
+person2:
+  name: raj popat
+  <<: *likes # the likings is copy pasted here.
+  dislike: berries # to override the default value from anchor
