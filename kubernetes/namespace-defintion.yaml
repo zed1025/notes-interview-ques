@@ -1,0 +1,4 @@
+apiVersion: v1
+king: Namespace
+metadata: 
+  name: dev

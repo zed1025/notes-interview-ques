@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: myapp-service
+spec:
+  type: LoadBalancer # works only on supported cloud providers
+  ports:
+    - targetPort: 80 
+      port: 80 
+      nodePort: 30008
+  
+    
