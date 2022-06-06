@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubeadm.kubernetes.io/kube-apiserver.advertise-address.endpoint: 10.14.54.6:6443
+  creationTimestamp: null
+  labels:
+    component: kube-apiserver
+    tier: control-plane
+  name: kube-apiserver
+  namespace: kube-system
+spec:
+  containers:
+  - command:
+    - kube-apiserver
+    - --advertise-address=10.14.54.6
+    image: k8s.gcr.io/kube-apiserver:v1.20.0
+    imagePullPolicy: IfNotPresent
+    name: kube-apiserver
