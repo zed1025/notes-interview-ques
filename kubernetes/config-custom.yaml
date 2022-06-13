@@ -1,0 +1,21 @@
+# KubeConfig file demo
+apiVersion: v1
+kind: Config
+current-context: my-kube-admin@my-kube-playground #default context
+
+clusters:
+- name: my-kube-playground
+  cluster: 
+    certificate-authority: ca.crt
+    server: https://my-kube-playground:6443
+contexts:
+- name: my-kube-admin@my-kube-playground
+  context: 
+    cluster: my-kube-playground # use same as used in the clusters section
+    user: my-kube-admin # use same as used in the users section
+    namespace: finanace
+users:
+- name: my-kube-admin
+  user:
+    client-certificate: admin.crt 
+    client-key: admin.key

@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-policy
+  namespace: default
+spec:
+  podSelector: # specifies which pod this network policy applies to
+    matchLabels:
+      role: db # specify this label in the pod defintion file, metadata
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+      - podSelector: # specify which pod the ingress traffic is allowd from
+          matchLabels:
+            role: api-server-pod
+      - namespaceSelector: # from what namespace traffic is allowd to reach
+          matchLabels: # make sure this label is set on the namespace too
+            project: prod
+      ports: # what port on the db-server the traffic is allowd to go to
+        - protocol: TCP
+          port: 3306
+  

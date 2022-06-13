@@ -1,0 +1,15 @@
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata: 
+  name: amit
+spec:
+  signerName: example.com/amit
+  groups: # groups the user is part of
+  - system:authenticated
+  usages: # usages of the account(see allowed values)
+  - any
+  # The CertificateSigningRequest "akshay" is invalid: spec.usages[2]: Unsupported value: "key enchipherment": supported values: "any", "cert sign", "client auth", "code signing", "content commitment", "crl sign", "data encipherment", "decipher only", "digital signature", "email protection", "encipher only", "ipsec end system", "ipsec tunnel", "ipsec user", "key agreement", "key encipherment", "microsoft sgc", "netscape sgc", "ocsp signing", "s/mime", "server auth", "signing", "timestamping"
+  request: # specify CSR sent by user (base64 encoded)
+    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ1ZqQ0NBVDRDQVFBd0VURVBNQTBHQTFVRUF3d0dZV3R6YUdGNU1JSUJJakFOQmdrcWhraUc5dzBCQVFFRgpBQU9DQVE4QU1JSUJDZ0tDQVFFQXFHWUh6ZHdCbjJpQVBKODRxTGZZRFFZS0JSbk5QdzlYZmVyZlRMb09ES3hWCkhDK1NLaEhTb2VzeTZtUURabUxTNURxT1NSbTlLL2NNeVVQM2NpdGxOYWFkQUVxL3pVOU1VSDB0YmNmN3p3RDMKVys2Vm9mNlR2N3lUalhUcFY1VXkzWXJqU1pVSDFaUG5saWgrdXgxK1JWK3VKdXdNTEU2TnlBa1VtUVoxVVVHNwp6MWIxNXMrZHgzNFYxYzk3N0hiOE83Z1NzQTJxckJmdDFNR2FwWGNRUWNhZEVZT0puM2MvS0pYaHNYeWVyYkg0CnpkNk0vcFFIMGRYZTMxb2d4aXU3Nnk1N1RIVzlCbGNnZkZFRUV0MldsTWxEZUNJRlIzd2Y0SVphSU14Sy8zVkMKYkZCS09vYkNZMjVMcEtMRmJJaVptaVo5WVVlQkVtY2ZuVjR1NWs2ZDR3SURBUUFCb0FBd0RRWUpLb1pJaHZjTgpBUUVMQlFBRGdnRUJBQmY3RkZrY3I3bzUvV2QzWXpkV3RuWDJvOUdFSSt5SDZvWjZLencyUndjcDNBdXpLQWlwCjJZZkFJNmNOMTRaeVRITEVnRW95ZzV3ZXBkaitVQmdUWkdCOG0relJTd0ZsdkdNdmtUSlAyc2dTZTRqWlIvcjkKbTkrMVBUbnlGS2cyRll4VFV0OFkyZ0JYSE04VXA2Mi90M3JrREtKK3JRa1JMT0JBOHFjMnNZZFo3cllOZy9HVAo4Tmg2OG02U3hLNHVXMmdtcFBmWWVKTmI3eHZTYnJYRUI5MlFWdXBsRjV3Z0RjdVRWT2hCQ0JMMG1kWHk2UTRRCjlmRW9UL3RBUGFMd3Zob3hEM0ROVEwydE9QT2d1SjdUb3grWk5EdmkrNzRPR1l3bnh6ZUhod2U3b1d2ei82ZEgKVis1MGRjSWlCa2NIM0xhTmh5OWNOa015VVprSXVScWZOZk09Ci0tLS0tRU5EIENFUlRJRklDQVRFIFJFUVVFU1QtLS0tLQo=
+  
+  
