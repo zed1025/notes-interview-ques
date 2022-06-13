@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-vol1
+  labels:
+    type: local
+spec:
+  capacity: # reserved for this PV
+    storage: 10Gi
+  accessModes: # how volumes should be mounted on hosts
+    - ReadWriteOnce
+  hostPath: # do not use in prod, replace with cloud providers key-val
+    path: "/mnt/data"
+
