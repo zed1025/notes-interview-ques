@@ -1,0 +1,9 @@
+- Advantage in a project
+    - reduced number of CPUs
+    - increased CPU utilizaton
+    - cost reduction
+    - dev productivity boost
+- Image vs container  
+    - image is the application we want to run
+    - container is the running instance of an image running as a process.
+- 
