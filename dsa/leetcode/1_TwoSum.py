@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/two-sum/
 # Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+# https://leetcode.com/discuss/general-discussion/199808/can-i-define-another-function-in-python3-in-solution
 
 # optimised, using hashmap
 def solution2(nums, target):

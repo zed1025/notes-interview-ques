@@ -50,3 +50,31 @@ import random
 print(random.random())
 print(random.randrange(1, 100))
 print('\n****************************** END ******************************\n')
+
+
+
+# check if a list contains all unique elements
+def all_unique(lst):
+  return len(lst) == len(set(lst))
+x = [1, 2, 3, 4, 5, 6]
+y = [1, 2, 2, 3, 4, 5]
+print(all_unique(x))  # True
+print(all_unique(y))  # False
+print('\n****************************** END ******************************\n')
+
+
+
+
+# transpose a matrix, hard way
+mat = [[1,1,1], [1,2,3], [4,5,6]]
+new_mat = []
+for i in range(len(mat)):
+  temp = []
+  for j in range(len(mat[i])):
+    temp.append(mat[j][i])
+    new_mat.append(temp)
+print(mat)
+print(new_mat)
+print('\n****************************** END ******************************\n')
+
+
