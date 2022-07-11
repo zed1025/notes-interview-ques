@@ -46,6 +46,7 @@ class Solution:
     
     # recursive
     # https://leetcode.com/problems/reverse-linked-list/discuss/1939316/Python-recursive-solution-explanation-with-visualization.
+    # https://www.youtube.com/watch?v=KYH83T4q6Vs
     def reverseList3(self, head):
         if head is None or head.next is None:
             return head
