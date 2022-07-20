@@ -1,0 +1,4 @@
+## What is cloning?
+Cloning is exactly what it sounds like: creating a copy, or clone, of a repository. A Git repository tracks the history of all changes inside the repository through a hidden _.git_ directory. 
+So since a Git repository is just a special directory, you could, in theory, effect a pretty cheap and dirty clone operation by zipping up all the files in a repository on your friend’s or colleague’s workstation and then emailing it to yourself. When you extract the contents of that zipped-up file, you’d have an exact copy of the repository on your computer.
+However, emailing things around can (and does) get messy. Instead, many organizations make use of online repository hosts, such as GitHub, GitLab, BitBucket or others. Some organizations even choose to self-host repositories.

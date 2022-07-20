@@ -1,0 +1,31 @@
+When you mess up your project (not if, but when), you’ll want to be able to go back in history and find a commit that worked, and rewind your project back to that point in time. This chapter shows you how.
+- `git log` This shows you a list of ancestral commits — that is, the set of commits that form the history of the current head
+- `git log -3`shows the number of commits(last 3 here) you’d like to see, starting from the most recent
+- `git log --oneline`
+- The short hash is simply the first seven characters of the long hash
+- `git log --graph` shows tree structure of your repository's history
+- `git log --graph --oneline`
+- Git’s not showing you the complete history, though. It’s only showing you the history of things that have happened on the master branch. To tell Git to show you the complete history of everything it knows about use the `--all`. `git log --oneline --graph --all`
+- `git shortlog`,  this is a nice way to get a summary of the commits
+## Searching Git history
+- `git log --author=crispy8888 --oneline` search commits only from crispy8888 user. This does the same, `git log --author="Chris Belanger" --oneline`
+- `git log --grep=ideas --oneline`find the commits, which have a commit message that contains the word “ideas”
+- Execute the following command to see all of the full commit messages for books/book_ideas.md. `git log --oneline books/book_ideas.md`
+- You can also see the commits that happened to the files in a particular directory, `git log --oneline books`. This shows you all the changes that happened in that directory, but it’s not clear which files were changed. `git log --oneline --stat books`, To get a clearer picture of which files were changed in that directory, you can throw the `--stat` option
+- Find all of the commits in your code that deal with the term “Fortran”,  `git log -S"Fortran"`
+- `git log -S"Fortran" -p`
+## Key points
+- `git log` by itself shows a basic, vanilla view of the ancestral commits of the current HEAD.
+- `git log -p` shows the diff of a commit.
+- `git log -n` shows the last n commits.
+- `git log --oneline` shows a concise view of the short hash and the commit message.
+- You can stack options on git log, as in `git log -8 --oneline` to show the last 8 commits in a condensed form.
+- `git log --graph` shows a crude but workable graphical representation of your repository.
+- `git log --all` shows commits on other branches in the repository, not just the ancestors of the current HEAD.
+- `git shortlog` shows a summary of commits, grouped by their author them, in increasing time order.
+- `git log --author="<authorname>"` lets you search for commits by a particular author.
+- `git log --grep="<term>"` lets you search commit messages for a particular term.
+- `git log <path/to/filename>` will show you just the commits associated with that one file.
+- `git log <directory>` will show you the commits for files in a particular directory.
+- `git log --stat` shows a nice overview of the scope and scale of the change in each commit.
+- `git log -S"<term>"` lets you search the contents of a commit’s changeset for a particular term.
